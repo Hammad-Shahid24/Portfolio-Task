@@ -6,28 +6,32 @@ const Header: FC = () => {
   const drawerRef = useRef<HTMLDivElement>(null);
 
   const toggleDrawer = () => {
+    console.log("Clicked");
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      drawerRef.current &&
-      !drawerRef.current.contains(event.target as Node)
-    ) {
-      setIsDrawerOpen(false);
-    }
-  };
+  // const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+  //   if (
+  //     drawerRef.current &&
+  //     !drawerRef.current.contains(event.target as Node)
+  //   ) {
+  //     setIsDrawerOpen(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    if (isDrawerOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isDrawerOpen]);
+  // useEffect(() => {
+  //   if (isDrawerOpen) {
+  //     document.addEventListener("mousedown", handleClickOutside);
+  //     document.addEventListener("touchstart", handleClickOutside);
+  //   } else {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //     document.removeEventListener("touchstart", handleClickOutside);
+  //   }
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //     document.removeEventListener("touchstart", handleClickOutside);
+  //   };
+  // }, [isDrawerOpen]);
 
   return (
     <nav className="w-full bg-white bg-opacity-50 backdrop-blur fixed top-0 z-50">
